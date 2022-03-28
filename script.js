@@ -11,13 +11,14 @@ const identity = document.getElementById('identity');
 const siteTitle = document.getElementById('siteTitle');
 const alertDiv = document.getElementById('alert');
 let alertMessage = document.createElement('p');
+const typeCheat = document.getElementById('typeCheat');
 
 // Variables
 
 // Alert
 
 function showAlert(type) {
-	switch(type) {
+	switch (type) {
 		case 'success':
 			alertDiv.appendChild(alertMessage);
 			alertMessage.classList.toggle(type);
@@ -27,7 +28,7 @@ function showAlert(type) {
 				alertDiv.classList.toggle('slideUp');
 				alertDiv.classList.toggle('opacity0');
 				setTimeout(function() {
-				alertMessage.classList.toggle(type);
+					alertMessage.classList.toggle(type);
 				}, 500);
 			}, 3000);
 			break;
@@ -40,7 +41,7 @@ function showAlert(type) {
 				alertDiv.classList.toggle('slideUp');
 				alertDiv.classList.toggle('opacity0');
 				setTimeout(function() {
-				alertMessage.classList.toggle(type);
+					alertMessage.classList.toggle(type);
 				}, 500);
 			}, 3000);
 			break;
@@ -146,7 +147,7 @@ function RecoverAndRemove(e) {
 		}
 		if (siteTitle.innerText.length === 0) {
 			RemovedChars.length = 0;
-			alertMessage.innerText = 'I\'ll restore it for you 😉.';
+			alertMessage.innerText = "I'll restore it for you 😉.";
 			siteTitle.innerHTML = `<h1>Mauricio&nbsp;J.&nbsp;Monta</h1>`;
 			showAlert('error');
 		}
@@ -183,16 +184,30 @@ function cheat(e) {
 		console.log('HESOYAM');
 		alertMessage.innerText = '+ $250.000';
 		showAlert('success');
+		cheatCode.length = 0;
 	}
 
-	setTimeout(function() {
+	if (cheatCode.join('') === 'UZUMYMW') {
+		console.log('UZUMYMW');
+		alertMessage.innerText = 'No guns allowed in this website.';
+		showAlert('error');
 		cheatCode.length = 0;
-		console.log('cheat code cleared');
-	}, 5000);
-
+	}
+	if (cheatCode.length === 10) {
+		cheatCode.length = 0;
+		typeCheat.classList.add('opacity0');
+	} else {
+		typeCheat.classList.remove('opacity0');
+	}
+	if (cheatCode.length === 0) {
+		typeCheat.classList.add('opacity0');
+	}
+	typeCheat.innerHTML = `<p>${cheatCode.join('')}</p>`;
 	console.log(cheatCode);
 }
 
 document.addEventListener('keydown', function(e) {
-	cheat(e);
+	if (e.which <= 90 && e.which >= 65) {
+		cheat(e);
+	}
 });
