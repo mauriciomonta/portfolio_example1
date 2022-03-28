@@ -34,8 +34,31 @@ html{
 	transition: all 0.3s ease-in-out;
 }
 
-.identity:hover img {
-	transform: rotate(-35deg);
+@keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+  }
+
+@keyframes shake {
+	10%, 90% {
+	  transform: translate3d(-1px, 0, 0);
+	}
+	
+	20%, 80% {
+	  transform: translate3d(1px, 0, 0);
+	}
+  
+	30%, 50%, 70% {
+	  transform: translate3d(-2px, 0, 0);
+	}
+  
+	40%, 60% {
+	  transform: translate3d(2px, 0, 0);
+	}
+  }
+
+.shake{
+	animation: shake 0.5s ease-in-out;
 }
 
 .navbar img {
@@ -51,12 +74,12 @@ html{
 }
 
 nav ul {
-    position: fixed;
+	position: fixed;
     right: 0;
     height: 76vh;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: end;
 	justify-content: center;
 	list-style-type: none;
     margin-top: 16px;
@@ -71,11 +94,11 @@ nav ul li a {
 }
 
 nav ul li{
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 nav ul li span{
-    transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
 }
 
 nav ul li a:hover span {
@@ -173,4 +196,13 @@ nav ul li span {
 
 .opacity0{
     opacity: 0;
+	transition: all 0.3s ease-in-out;
+}
+
+.opacity100{
+	opacity: 100%;
+}
+
+.active{
+	color: var(--secondary);
 }

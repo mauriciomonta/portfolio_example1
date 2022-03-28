@@ -1,6 +1,125 @@
-const menu = document.getElementById('nav')
+// Variables
+
+const menu = document.getElementById('nav');
 const navigate = document.getElementById('navigate');
+const navbarText = document.getElementById('navtext');
+const nav = document.getElementById('nav');
+const home = document.getElementById('nav01');
+const about = document.getElementById('nav02');
+const portfolio = document.getElementById('nav03');
+const identity = document.getElementById('identity');
+const siteTitle = document.getElementById('siteTitle');
+
+// Variables
+
+// Remove water mark "use to navigate"
 
 menu.addEventListener('mouseenter', function(e) {
-    navigate.classList.add('opacity0');
-})
+	navigate.classList.add('opacity0');
+});
+
+// Remove water mark "use to navigate"
+
+// Colorized active section
+
+home.addEventListener('click', function(e) {
+	about.classList.remove('active');
+	portfolio.classList.remove('active');
+});
+
+about.addEventListener('click', function(e) {
+	home.classList.remove('active');
+	about.classList.add('active');
+	portfolio.classList.remove('active');
+});
+
+portfolio.addEventListener('click', function(e) {
+	home.classList.remove('active');
+	about.classList.remove('active');
+	portfolio.classList.add('active');
+});
+
+// Colorized active section
+
+// Change text menu on hover
+
+navbarText.addEventListener('mouseover', function() {
+	if (home.innerHTML === '<span>USE</span>') {
+		revealMenu();
+	}
+});
+
+function revealMenu(completed) {
+	home.innerHTML = '<span>UPS...</span>';
+	setTimeout(function() {
+		about.innerHTML = '<span>LET ME</span>';
+	}, 500);
+	setTimeout(function() {
+		portfolio.innerHTML = '<span>FIX IT😬</span>';
+	}, 1000);
+
+	completed = true;
+	setTimeout(function() {
+		changeMenu(completed);
+	}, 2000);
+}
+function changeMenu(completed) {
+	if (completed === true) {
+		navbarText.classList.add('opacity0');
+		setTimeout(function() {
+			home.innerHTML = '<span>01.</span>';
+			about.innerHTML = '<span>02.</span>';
+			portfolio.innerHTML = '<span>03.</span>';
+			console.log('Menu changed');
+		}, 500);
+		setTimeout(function() {
+			navbarText.classList.add('opacity100');
+		}, 1000);
+	}
+}
+
+// Change text menu on hover
+
+// Shake identity and remove the last char.
+
+let RemovedChars = [];
+
+function RecoverAndRemove(e) {
+	let idText = [];
+	let lastPosition = 0;
+	let lastWord = '';
+
+	for (let i = 0; i < identity.innerText.length; i++) {
+		idText.push(identity.innerText[i]);
+		if (lastPosition < i) {
+			lastPosition = i;
+		}
+	}
+	lastWord = idText[lastPosition];
+
+	if (e.keyCode === 37) {
+		idText.splice(-1);
+		siteTitle.innerHTML = `<h1>${idText.join('')}</h1>`;
+		identity.classList.add('shake');
+		setTimeout(function() {
+			identity.classList.remove('shake');
+		}, 500);
+		RemovedChars.push(lastWord);
+	}
+
+	if (e.keyCode === 39) {
+		idText.push(RemovedChars[RemovedChars.length - 1]);
+		RemovedChars.splice(-1);
+		siteTitle.innerHTML = `<h1>${idText.join('')}</h1>`;
+		identity.classList.add('shake');
+		setTimeout(function() {
+			identity.classList.remove('shake');
+		}, 500);
+	}
+}
+
+document.addEventListener('keydown', function(e) {
+	if (e.keyCode === 37 || e.keyCode === 39) {
+		RecoverAndRemove(e);
+	}
+});
