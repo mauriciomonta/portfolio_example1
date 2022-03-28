@@ -9,8 +9,45 @@ const about = document.getElementById('nav02');
 const portfolio = document.getElementById('nav03');
 const identity = document.getElementById('identity');
 const siteTitle = document.getElementById('siteTitle');
+const alertDiv = document.getElementById('alert');
+let alertMessage = document.createElement('p');
 
 // Variables
+
+// Alert
+
+function showAlert(type) {
+	switch(type) {
+		case 'success':
+			alertDiv.appendChild(alertMessage);
+			alertMessage.classList.toggle(type);
+			alertDiv.classList.toggle('opacity0');
+			alertDiv.classList.toggle('slideUp');
+			setTimeout(function() {
+				alertDiv.classList.toggle('slideUp');
+				alertDiv.classList.toggle('opacity0');
+				setTimeout(function() {
+				alertMessage.classList.toggle(type);
+				}, 500);
+			}, 3000);
+			break;
+		case 'error':
+			alertDiv.appendChild(alertMessage);
+			alertMessage.classList.toggle(type);
+			alertDiv.classList.toggle('opacity0');
+			alertDiv.classList.toggle('slideUp');
+			setTimeout(function() {
+				alertDiv.classList.toggle('slideUp');
+				alertDiv.classList.toggle('opacity0');
+				setTimeout(function() {
+				alertMessage.classList.toggle(type);
+				}, 500);
+			}, 3000);
+			break;
+	}
+}
+
+// Alert
 
 // Remove water mark "use to navigate"
 
@@ -98,13 +135,21 @@ function RecoverAndRemove(e) {
 	lastWord = idText[lastPosition];
 
 	if (e.keyCode === 37) {
-		idText.splice(-1);
-		siteTitle.innerHTML = `<h1>${idText.join('')}</h1>`;
-		identity.classList.add('shake');
-		setTimeout(function() {
-			identity.classList.remove('shake');
-		}, 500);
-		RemovedChars.push(lastWord);
+		if (siteTitle.innerText.length > 0) {
+			idText.splice(-1);
+			siteTitle.innerHTML = `<h1>${idText.join('')}</h1>`;
+			identity.classList.add('shake');
+			setTimeout(function() {
+				identity.classList.remove('shake');
+			}, 500);
+			RemovedChars.push(lastWord);
+		}
+		if (siteTitle.innerText.length === 0) {
+			RemovedChars.length = 0;
+			alertMessage.innerText = 'I\'ll restore it for you 😉.';
+			siteTitle.innerHTML = `<h1>Mauricio&nbsp;J.&nbsp;Monta</h1>`;
+			showAlert('error');
+		}
 	}
 
 	if (e.keyCode === 39) {
@@ -122,4 +167,32 @@ document.addEventListener('keydown', function(e) {
 	if (e.keyCode === 37 || e.keyCode === 39) {
 		RecoverAndRemove(e);
 	}
+});
+
+// Shake identity and remove the last char.
+
+// HESOYAM cheat code
+
+let cheatCode = [];
+
+function cheat(e) {
+	let lastKey = e.key;
+	cheatCode.push(lastKey.toUpperCase());
+
+	if (cheatCode.join('') === 'HESOYAM') {
+		console.log('HESOYAM');
+		alertMessage.innerText = '+ $250.000';
+		showAlert('success');
+	}
+
+	setTimeout(function() {
+		cheatCode.length = 0;
+		console.log('cheat code cleared');
+	}, 5000);
+
+	console.log(cheatCode);
+}
+
+document.addEventListener('keydown', function(e) {
+	cheat(e);
 });

@@ -13,6 +13,9 @@ html{
 	--first: rgb(197, 197, 197);
 	--secondary: #ff335f;
 	--third: #373a3c;
+	--success: #00c851;
+	--error: #ff0000;
+	--light: rgb(228, 228, 228);
 }
 
 .navbar {
@@ -32,6 +35,24 @@ html{
 
 .identity img {
 	transition: all 0.3s ease-in-out;
+}
+
+@keyframes slideUp {
+	0% {
+		transform: translateY(120%);
+	}
+	90% {
+		transform: translateY(-10%);
+	}
+	95% {
+		transform: translateY(10%);
+	}
+	98% {
+		transform: translateY(-10%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
 }
 
 @keyframes fadein {
@@ -60,6 +81,13 @@ html{
 .shake{
 	animation: shake 0.5s ease-in-out;
 }
+
+.slideUp{
+	opacity: 100%;
+	animation: slideUp 1.5s ease-in-out;
+	transition: all 2s ease-in-out;
+}
+
 
 .navbar img {
 	width: 50px;
@@ -205,4 +233,27 @@ nav ul li span {
 
 .active{
 	color: var(--secondary);
+}
+
+.alert{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.success{
+	padding: 5px 10px;
+	border-radius: 4px;
+	box-shadow: 0 0 10px 3px rgba(209, 209, 209, 0.3);
+	background-color: var(--light);
+	border-left: #00c851 5px solid;
+}
+
+.error{
+	padding: 5px 10px;
+	border-radius: 4px;
+	box-shadow: 0 0 10px 3px rgba(209, 209, 209, 0.3);
+	background-color: var(--light);
+	border-left: var(--error) 5px solid;
 }
