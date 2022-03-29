@@ -180,18 +180,49 @@ function cheat(e) {
 	let lastKey = e.key;
 	cheatCode.push(lastKey.toUpperCase());
 
-	if (cheatCode.join('') === 'HESOYAM') {
-		console.log('HESOYAM');
-		alertMessage.innerText = '+ $250.000';
-		showAlert('success');
-		cheatCode.length = 0;
-	}
+	switch (cheatCode.join('')) {
+		case 'HESOYAM':
+			console.log('HESOYAM');
+			alertMessage.innerText = '+ $250.000';
+			showAlert('success');
+			cheatCode.length = 0;
+			break;
 
-	if (cheatCode.join('') === 'UZUMYMW') {
-		console.log('UZUMYMW');
-		alertMessage.innerText = 'No guns allowed in this website.';
-		showAlert('error');
-		cheatCode.length = 0;
+		case 'UZUMYMW':
+			console.log('HESOYAM');
+			alertMessage.innerText = '+ $250.000';
+			showAlert('success');
+			cheatCode.length = 0;
+			break;
+
+		case 'DARKMODE':
+			if (mode === 'light') {
+				alertMessage.innerText = 'Dark mode activated';
+				showAlert('success');
+				cheatCode.length = 0;
+				mode = 'dark';
+			} else {
+				alertMessage.innerText = 'You already have dark mode activated';
+				showAlert('success');
+				cheatCode.length = 0;
+			}
+			// finish dark mode
+			// if i'm in darkmode and i write darkmode again, should show an alert saying that i already have dark mode activated.
+			break;
+
+		case 'LIGHTMODE':
+			if (mode === 'dark') {
+				alertMessage.innerText = 'Light mode activated';
+				showAlert('success');
+				cheatCode.length = 0;
+				return mode = 'light';
+			} else {
+				alertMessage.innerText = 'You already have light mode activated';
+				showAlert('success');
+				cheatCode.length = 0;
+			}
+			// finish light mode
+			break;
 	}
 	if (cheatCode.length === 10) {
 		cheatCode.length = 0;
