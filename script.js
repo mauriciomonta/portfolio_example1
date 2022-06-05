@@ -146,6 +146,7 @@ function RecoverAndRemove(e) {
 			RemovedChars.push(lastWord);
 		}
 		if (siteTitle.innerText.length === 0) {
+			
 			RemovedChars.length = 0;
 			alertMessage.innerText = "I'll restore it for you 😉.";
 			siteTitle.innerHTML = `<h1>Mauricio&nbsp;J.&nbsp;Monta</h1>`;
