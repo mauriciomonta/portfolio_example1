@@ -146,7 +146,6 @@ function RecoverAndRemove(e) {
 			RemovedChars.push(lastWord);
 		}
 		if (siteTitle.innerText.length === 0) {
-			
 			RemovedChars.length = 0;
 			alertMessage.innerText = "I'll restore it for you 😉.";
 			siteTitle.innerHTML = `<h1>Mauricio&nbsp;J.&nbsp;Monta</h1>`;
@@ -196,7 +195,7 @@ function cheat(e) {
 			cheatCode.length = 0;
 			break;
 
-		case 'DARKMODE':
+		case 'TURNOFF':
 			if (mode === 'light') {
 				alertMessage.innerText = 'Dark mode activated';
 				showAlert('success');
@@ -211,12 +210,12 @@ function cheat(e) {
 			// if i'm in darkmode and i write darkmode again, should show an alert saying that i already have dark mode activated.
 			break;
 
-		case 'LIGHTMODE':
+		case 'TURNON':
 			if (mode === 'dark') {
 				alertMessage.innerText = 'Light mode activated';
 				showAlert('success');
 				cheatCode.length = 0;
-				return mode = 'light';
+				return (mode = 'light');
 			} else {
 				alertMessage.innerText = 'You already have light mode activated';
 				showAlert('success');
