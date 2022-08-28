@@ -10,12 +10,12 @@ html {
 }
 
 :root {
-	--first: rgb(197, 197, 197);
+	--first: rgba(197, 197, 197, 0.346);
 	--secondary: #ff335f;
 	--third: #373a3c;
 	--success: #00c851;
 	--error: #ff0000;
-	--light: rgb(228, 228, 228);
+	--light: rgb(250, 250, 250);
 }
 
 .navbar {
@@ -286,15 +286,69 @@ nav ul li span {
 	justify-content: center;
 }
 
-.projectslist{
+.projects {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	width: 70vw;
+}
+
+.project {
+	margin-right: 40px;
+	margin-top: 50px;
+	background-color: var(--light);
+	width: 50%;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: var(--first) 0 0 10px 2px;
+	transition: 0.2s all ease-in;
+	border-bottom: 3px solid var(--secondary);
+}
+
+.project:hover {
+	transform: scale(1.02);
+	box-shadow: var(--first) 0 0 10px 4px;
+}
+
+.project-image {
+	border-radius: 10px;
+}
+
+.project-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.project-info h2 {
+	margin-bottom: 10px;
+}
+
+.project-links {
 	display: flex;
 	flex-direction: row;
 	list-style-type: none;
-	margin-top: 20px;
+	margin-top: 17px;
 }
 
-.projectslist > li{
-	margin-right: 20px;
+.project-links a {
+	text-decoration: none;
+	color: var(--third);
+}
+
+.project-links i, span{
+	color: var(--third);
+}
+
+.pl-left, .pl-right{
+	padding: 5px 20px
+}
+
+
+.pl-left:hover, .pl-right:hover{
+	background-color: var(--first);
+	border-radius: 5px;
 }
 
 @keyframes rgb {
