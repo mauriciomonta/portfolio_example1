@@ -237,6 +237,10 @@ nav ul li span {
 	transition: all 0.3s ease-in-out;
 }
 
+.no-show{
+	display: none;
+}
+
 .opacity100 {
 	opacity: 100%;
 }
@@ -339,18 +343,55 @@ nav ul li span {
 	color: var(--third);
 }
 
-.project-links i, span{
+.project-links i,
+span {
 	color: var(--third);
 }
 
-.pl-left, .pl-right{
-	padding: 5px 20px
+.pl-left,
+.pl-right {
+	padding: 5px 20px;
 }
 
-
-.pl-left:hover, .pl-right:hover{
+.pl-left:hover,
+.pl-right:hover {
 	background-color: var(--first);
 	border-radius: 5px;
+}
+
+.contact {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	justify-content: center;
+	align-items: center;
+}
+
+form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+form > input{
+	border: 0;
+	border-bottom: 1px solid var(--first);
+	padding: 5px;
+	font-size: 2rem;
+}
+
+form > input:focus{
+	outline: 0;
+}
+
+::placeholder{
+	color: var(--first)
+}
+
+.contact-form .tooltip {
+	margin-top: 10px;
+	color: var(--first);
 }
 
 @keyframes rgb {
