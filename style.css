@@ -170,11 +170,12 @@ nav ul li span {
 	margin-right: 20px;
 }
 
-.home-content span {
+.home-content span, .portfolio span {
 	background-color: var(--third);
 	color: #fff;
 	padding: 0 5px;
 	font-weight: bold;
+	border-radius: 5px;
 }
 
 .socialmedia {
@@ -210,6 +211,10 @@ nav ul li span {
 	margin-top: 55px;
 	height: 100vh;
 	background-color: #fff;
+}
+
+.portfolio h1{
+	margin-bottom: 20px;
 }
 
 .navigate {
