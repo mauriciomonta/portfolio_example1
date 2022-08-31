@@ -170,7 +170,8 @@ nav ul li span {
 	margin-right: 20px;
 }
 
-.home-content span, .portfolio span {
+.home-content span,
+.portfolio span {
 	background-color: var(--third);
 	color: #fff;
 	padding: 0 5px;
@@ -213,7 +214,7 @@ nav ul li span {
 	background-color: #fff;
 }
 
-.portfolio h1{
+.portfolio h1 {
 	margin-bottom: 20px;
 }
 
@@ -242,7 +243,7 @@ nav ul li span {
 	transition: all 0.3s ease-in-out;
 }
 
-.no-show{
+.no-show {
 	display: none;
 }
 
@@ -373,25 +374,70 @@ span {
 	align-items: center;
 }
 
-form{
+form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-form > input{
+form > input {
 	border: 0;
 	border-bottom: 1px solid var(--first);
 	padding: 5px;
-	font-size: 2rem;
+	font-size: 1rem;
+	border-radius: 5px;
+	transition: 0.5s all ease-in;
 }
 
-form > input:focus{
+form > textarea {
+	margin-top: 10px;
+	border: 0;
+	border-bottom: 1px solid var(--first);
+	padding: 5px;
+	border-radius: 5px;
+	resize: none;
+}
+
+form > input:focus,
+form > textarea:focus {
 	outline: 0;
+	border-radius: 5px;
+	border-bottom: 1px solid var(--secondary);
+	color: var(--secondary);
 }
 
-::placeholder{
-	color: var(--first)
+form > button:focus {
+	outline: 0;
+	border-radius: 5px;
+	border-bottom: 1px solid var(--secondary);
+	box-shadow: var(--first) 0 0 10px 2px;
+	color: var(--third);
+}
+
+textarea::placeholder {
+	font-size: 1rem;
+}
+::placeholder {
+	color: var(--first);
+}
+
+form > button {
+	margin-top: 20px;
+	padding: 5px;
+	border: 0;
+	background-color: transparent;
+	font-size: 1rem;
+	color: var(--first);
+	border-radius: 5px;
+	/**box-shadow: var(--first) 0 0 15px 2px;**/
+	border-bottom: 2px solid transparent;
+	transition: 0.4s all ease-in;
+}
+
+form > button:hover {
+	border-bottom: 2px solid var(--secondary);
+	box-shadow: var(--first) 0 0 10px 2px;
+	color: var(--third);
 }
 
 .contact-form .tooltip {

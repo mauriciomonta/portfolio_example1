@@ -83,7 +83,7 @@ portfolio.addEventListener('click', function(e) {
 
 navbarText.addEventListener('mouseover', function() {
 	if (home.innerHTML === '<span>USE</span>') {
-		revealMenu();
+		//revealMenu();
 	}
 });
 
